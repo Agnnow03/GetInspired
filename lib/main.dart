@@ -8,11 +8,21 @@ import 'IdeaListPage/listpage_view.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-void main() {
+void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: FirebaseOptions(
+      apiKey: 'key',
+      appId: '1:214239220035:android:b9b8bed916a8acaf18dff6',
+      messagingSenderId: "sendid",
+      projectId: 'getinspired-7f0ae',
+      storageBucket: 'myapp-b9yt18.appspot.com'
+    )
+  );
   runApp(
     ProviderScope( 
-      child: MyApp(),
-    ),
+        child: MyApp(),
+      ),
     );
 }
 

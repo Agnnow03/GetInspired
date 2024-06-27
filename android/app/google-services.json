@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "214239220035",
+    "project_id": "getinspired-7f0ae",
+    "storage_bucket": "getinspired-7f0ae.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:214239220035:android:b9b8bed916a8acaf18dff6",
+        "android_client_info": {
+          "package_name": "com.example.get_inspired"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBpTGqHmZ7eBvU04nCTpOqJcjIFeztn_LU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
