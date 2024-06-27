@@ -1,24 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:get_inspired/utils/route_constants.dart';
+import 'package:get_inspired/utils/routes.dart';
 
-class HomePage extends StatefulWidget {
+class HomePage extends ConsumerWidget{
   const HomePage({super.key, required this.title});
 
   final String title;
 
   @override
-  State<HomePage> createState() => _HomePageState();
-}
-
-class _HomePageState extends State<HomePage> {
-
-  @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
    
     return Scaffold(
       appBar: AppBar(
         
         backgroundColor: Colors.yellow,
-        title: Text(widget.title, style: const TextStyle(color: Colors.white)),
+        title: Text(title, style: const TextStyle(color: Colors.white)),
       ),
       body: Center(
         child: Column(
@@ -28,7 +25,7 @@ class _HomePageState extends State<HomePage> {
           const Text("GetInspired", style: TextStyle(fontFamily: 'Lexend', fontWeight: FontWeight.bold, fontSize: 30, color: Colors.yellow)), 
           
           const SizedBox(height:100),
-
+          
           ElevatedButton(
           style: ElevatedButton.styleFrom(
           foregroundColor: Colors.white,
@@ -37,7 +34,9 @@ class _HomePageState extends State<HomePage> {
           fixedSize: const Size.fromWidth(180),
           ),
           
-          onPressed: () {},
+          onPressed: () {
+            Navigator.pushNamed(context, RoutePaths.createIdea);
+          },
           child: const Text('Create a new idea'),
         ),
         const SizedBox(height:10),
@@ -48,7 +47,9 @@ class _HomePageState extends State<HomePage> {
           shadowColor: Colors.orange,
           fixedSize: const Size.fromWidth(180),
           ),
-          onPressed: () {},
+          onPressed: () {
+            Navigator.pushNamed(context, RoutePaths.ideaList);
+          },
           child: const Text('Your ideas'),
         ),
           ],

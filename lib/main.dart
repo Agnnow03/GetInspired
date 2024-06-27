@@ -1,12 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:get_inspired/View/idea_type_page.dart';
-import 'View/homepage.dart';
-import 'View/results_page.dart';
-import 'View/idea_list_page.dart';
+import 'package:get_inspired/CreateIdeaPage/createIdeaPage_view.dart';
+import 'package:get_inspired/utils/route_constants.dart';
+import 'package:get_inspired/utils/routes.dart';
+import 'HomePage/homepage_view.dart';
+import 'ResultsPage/results_page.dart';
+import 'IdeaListPage/listpage_view.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(
+    ProviderScope( 
+      child: MyApp(),
+    ),
+    );
 }
 
 //@override
@@ -17,19 +24,21 @@ void main() {
 
 //  }
 
-class MyApp extends StatelessWidget {
+class MyApp extends ConsumerWidget{
   const MyApp({super.key});
 
   // This widget is the root of your application.
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return MaterialApp(
       title: 'Getinspired',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.yellow),
         useMaterial3: true,
       ),
-      home: const HomePage(title: 'Get inspired'),
+      //home: const HomePage(title: 'Get inspired'),
+      initialRoute: RoutePaths.home,
+      onGenerateRoute: Routes.routeTo,
     );
   }
 }

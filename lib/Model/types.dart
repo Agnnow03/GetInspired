@@ -1,39 +1,68 @@
-enum IdeaType {character, environment, object, charEnvironemnt, none}
+enum IdeaType {character_concept_art, environment_concept_art, object_concept_art; 
 
-enum CharacterType {human, humanoidCreature, creature, none}
-//both for humanoids/nonhumanoids
-enum CreatureType {fantasy, mythical, scienceFiction, animalBased, none}
-//for animal based creatures
-//enum AnimalExamples{ }
-//load a json list?
+static List<String> stringValues() => IdeaType.values.map((e) => e.name.replaceAll(RegExp('_'), ' ')).toList();}
 
-enum WorldType {alien_planet, earth}
+enum IdeaTheme {
+  science_fiction, fantasy,  mitology, real_life;
+  static List<String> stringValues() => IdeaTheme.values.map((e) => e.name.replaceAll(RegExp('_'), ' ')).toList();
+}
 
-enum AlienPlanet {close_to_the_sun, far_away_from_the_sun, with_life_only_underwater, with_high_pressure, with_low_pressure}
+enum Mood{
+  dramatic, scary, uplifting, calm, sad;
+  static List<String> stringValues() => Mood.values.map((e) => e.name.replaceAll(RegExp('_'), ' ')).toList();
+}
+enum ObjectType{
+  everyday_use_object, weapon, accesory, armour, furniture;
+  static List<String> stringValues() => ObjectType.values.map((e) => e.name.replaceAll(RegExp('_'), ' ')).toList();
+}
 
-enum CharacterOccupation {detective, artist, soldier, craftsman, officeWorker, scientist, explorer, traveler, none}
+enum CharacterType {human, humanoid_creature, creature ;
+static List<String> stringValues() => CharacterType.values.map((e) => e.name.replaceAll(RegExp('_'), ' ')).toList();}
+
+enum CreatureType {fantasy, mythical, science_fiction, animal_based ;
+static List<String> stringValues() => CreatureType.values.map((e) => e.name.replaceAll(RegExp('_'), ' ')).toList();}
+
+enum EnvironmentType {open_space, building_design, interior_design;
+static List<String> stringValues() => EnvironmentType.values.map((e) => e.name.replaceAll(RegExp('_'), ' ')).toList();}
+
+enum EnvironmentBuildingType{ temple, apartment_building, store, castle, }
+
+//enum WorldType {alien_planet, earth}    delete - it wil be checking condition for scifi fantasy reallife
+enum EnvironmentOpenSpace {cave, dessert, forest, mountains;
+static List<String> stringValues() => EnvironmentOpenSpace.values.map((e) => e.name.replaceAll(RegExp('_'), ' ')).toList();}
+
+enum EnvironmentAlienPlanet {deep_space_alien_planet, volcanic_alien_planet, underwater_alien_planet, alien_planet_with_touch_conditions ;
+static List<String> stringValues() => EnvironmentAlienPlanet.values.map((e) => e.name.replaceAll(RegExp('_'), ' ')).toList();}
+
+enum CharacterOccupation {detective, artist, soldier, craftsman, officeWorker, scientist, explorer, traveler }
 
 //czegoś brakuje - rozwój technologoiczny?
-enum TimeSetting {modern_times, medieval, ancient, future, none}
+enum RealLifeType{nowaday, medieval, ancient, futuristic;
+static List<String> stringValues() => RealLifeType.values.map((e) => e.name.replaceAll(RegExp('_'), ' ')).toList();}
 
 //type of society?
-enum ScienceFictionType {bio_technology, cyberware ,post_apocalyptic, futuristic, steam_punk, alien, dystopian, space_technology, advanced_technology, none}
+enum ScienceFictionType {bio_technology, cyberware ,post_apocalyptic, futuristic, steam_punk, alien, dystopian, space_technology, advanced_technology;
+static List<String> stringValues() => ScienceFictionType.values.map((e) => e.name.replaceAll(RegExp('_'), ' ')).toList(); }
 //steamPunk - fantasy+science fiction in industrial era 
-enum FantasyType {medieval , historical_fantasy, Sword_And_Sorcery, modern_supernatural, dark_fantasy, high_fantasy, low_fantasy, none}
+enum FantasyType {historical_fantasy, sword_and_sorcery, supernatural, dark_fantasy, high_fantasy, low_fantasy ;
+static List<String> stringValues() => FantasyType.values.map((e) => e.name.replaceAll(RegExp('_'), ' ')).toList();}
 //also robots also - an option to create a fantastical scienceFiction etc
 // fe vampire/siren is a creature
 
 //robotic beast?
-enum MythType {norse,korean,mongol,taiwanese, thai, persian,mesopotamian,arabian, baltic, slavic ,greek, roman, egyptian, chinese, celtic, japanese, none}
+enum MitologyType {norse_mitology,korean_mitology,mongol_mitology,taiwanese_mitology, thai_mitology, persian_mitology,mesopotamian_mitology,arabian_mitology, baltic_mitology, slavic_mitology ,greek_miotlogy, roman_mitology, egyptian_mitology, chinese_mitology, celtic_mitology, japanese_mitology ;
+static List<String> stringValues() => MitologyType.values.map((e) => e.name.replaceAll(RegExp('_'), ' ')).toList();}
 
-enum AgeGroup{child, teenager, adult, youngAdult, middlea_aged, elder, none}
+enum AgeGroup{child, teenager, adult, youngAdult, middlea_aged, elder }
 enum Nationality{none}
 
 // optional add specifics - to generate details for additional idea
-enum EnvironmentType {building, cave, dessert, forest, mountains, }
 
 //based on use - weapon, everydayUse, furniture etc
-enum ObjectType {everydayUse, combat, furniture, none}
+
+enum ColorPaletteType {warm, cold;
+static List<String> stringValues() => ColorPaletteType.values.map((e) => e.name.replaceAll(RegExp('_'), ' ')).toList();
+}
 
 enum ColorPaletteWarm {none}
 

@@ -1,6 +1,4 @@
-//zrodlo: https://gist.github.com/borlaym/585e2e09dd6abd9b0d0a
-
-[
+const List<String> allAnimals= [
     "Aardvark",
     "Albatross",
     "Alligator",
@@ -225,4 +223,4 @@
     "Wren",
     "Yak",
     "Zebra"
-]
+];

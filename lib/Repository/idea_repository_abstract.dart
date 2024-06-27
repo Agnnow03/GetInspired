@@ -7,6 +7,6 @@ abstract class IdeaRepositoryAbstract{
   saveIdea({required String ideaId});
   
   //Future<Idea> getIdeas();
-  Idea getIdeas();
+  Future<Idea> getIdeas();
  
 }

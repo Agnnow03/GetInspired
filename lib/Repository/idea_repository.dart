@@ -3,14 +3,15 @@ import 'package:get_inspired/Repository/idea_repository_abstract.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 
 class IdeaRepository extends IdeaRepositoryAbstract{
-
+  @override
   saveIdea({required String ideaId}){
     //
   }
-  
-  Idea getIdeas(){
-    //
-    return Idea();
+
+  @override
+  Future<Idea> getIdeas() async{
+    final idea = Idea(ideaName: "",ideaType: "",ideaSubType: "",ideaTheme:"",description: "",ideaMood: "",colorPalette: [],themeExample: ""); 
+    return idea; //for tetsing ! change later
   }
  
 }
