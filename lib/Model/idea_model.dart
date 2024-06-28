@@ -25,9 +25,18 @@ final List<Image> drawings;
 //methods
 
 // opdowiednie listy
-Idea({required this.id,required this.themeExample,required this.ideaName,required this.ideaType, required this.ideaSubType, required this.ideaTheme,
- required this.description, required this.drawings,
- required this.ideaMood,required this.colorPalette});
+Idea({
+    required this.id,
+    required this.themeExample,
+    required this.ideaName,
+    required this.ideaType,
+    required this.ideaSubType,
+    required this.ideaTheme,
+    required this.description,
+    required this.drawings,
+    required this.ideaMood,
+    required this.colorPalette,
+  });
 Idea copyWith({
   String? id,
   String? ideaName,
@@ -62,9 +71,9 @@ Map<String, dynamic> toMap(){
     'ideaTheme': ideaTheme,
     'description': description,
     'ideaMood': ideaMood,
-    'colorPalette': colorPalette,
+    'colorPalette': colorPalette.map((color) => color.value).toList(),
     'themeExample': themeExample,
-    'drawings': drawings,
+    'drawings': drawings.map((image) => image.toString()).toList(),
   };
 }
 factory Idea.fromMap(DocumentSnapshot<Map<String,dynamic>> document){
@@ -77,9 +86,9 @@ return Idea(
      ideaTheme: ideaMap['ideaTheme'] ?? '',
     description:ideaMap['description'] ?? '',
     ideaMood : ideaMap['ideaMood'] ?? '',
-    colorPalette: List<Color>.from(ideaMap['colorPalette']) ?? [],
+    colorPalette: (ideaMap['colorPalette'] as List).map((color) => Color(color)).toList(),
     themeExample: ideaMap['themeExample'] ?? "",
-    drawings: List<Image>.from(ideaMap['drawings']) ?? [],
+    drawings: (ideaMap['drawings'] as List).map((image) => Image.network(image)).toList(),
 );
 }
 

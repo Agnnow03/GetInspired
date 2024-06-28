@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:get_inspired/Model/Idea_ViewModel.dart';
+import 'package:get_inspired/Service/idea_service.dart';
 
 
 class IdeaPage extends ConsumerWidget {
-  const IdeaPage( {super.key, required this.title});
+   IdeaPage( {super.key, required this.title});
   
   //final index;
   final String title;
+  final IdeaService _db = IdeaService();
   
   @override
   Widget build(BuildContext context,WidgetRef ref) {
