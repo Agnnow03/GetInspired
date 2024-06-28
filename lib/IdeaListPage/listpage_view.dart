@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:get_inspired/Model/Idea_ViewModel.dart';
+import 'package:get_inspired/utils/route_constants.dart';
 import 'widget_list_item.dart';
 
 class IdeaListPage extends ConsumerWidget {
@@ -25,8 +26,14 @@ class IdeaListPage extends ConsumerWidget {
         //ZMIENIC NA ListView builder
        child: ListView.builder(
               itemCount: ideaViewModel.allIdeas.length,
-              itemBuilder: (_, index) {  
-                return ListItemIdea(index:index);
+              itemBuilder: (context, index) {
+                final idea = ideaViewModel.allIdeas[index];
+                return ListTile(
+                  title: Text(idea.ideaName),
+                  onTap: (){
+                    Navigator.pushNamed(context, RoutePaths.ideaPage);
+                  },
+                );
               },
  
         ),
