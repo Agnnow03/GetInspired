@@ -1,7 +1,7 @@
 import 'package:get_inspired/Model/picture.dart';
-import 'package:get_inspired/Repository/picture_repository_abstract.dart';
 
-class PictureRepository extends PictureRepositoryAbstract{
+
+class PictureService{
 
   @override
   savePicture({required String ideaId}){

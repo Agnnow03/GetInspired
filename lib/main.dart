@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get_inspired/CreateIdeaPage/createIdeaPage_view.dart';
+import 'package:get_inspired/Service/idea_service.dart';
 import 'package:get_inspired/utils/route_constants.dart';
 import 'package:get_inspired/utils/routes.dart';
 import 'HomePage/homepage_view.dart';
@@ -11,6 +12,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
+    name: 'name-here',
     options: FirebaseOptions(
       apiKey: 'key',
       appId: '1:214239220035:android:b9b8bed916a8acaf18dff6',
@@ -18,7 +20,9 @@ void main() async{
       projectId: 'getinspired-7f0ae',
       storageBucket: 'myapp-b9yt18.appspot.com'
     )
-  );
+  ); 
+  IdeaService service = IdeaService();
+  service.getIdeaList();
   runApp(
     ProviderScope( 
         child: MyApp(),

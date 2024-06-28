@@ -68,7 +68,9 @@ const SizedBox(height: 20.0,),
           fixedSize: const Size.fromWidth(180),
           ),
             onPressed: () {
-              if(userInput.text!=null){ ideaViewModel.setName(userInput.text); }
+              if(userInput.text!=null){ 
+                ideaViewModel.setName(userInput.text);}
+                ideaViewModel.saveIdea(); 
                 Navigator.pushNamed(context, RoutePaths.ideaPage);
             },
             child: const Text('Save'),

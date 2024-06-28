@@ -4,14 +4,17 @@ import 'package:get_inspired/Model/Idea_ViewModel.dart';
 
 
 class IdeaPage extends ConsumerWidget {
-  const IdeaPage({super.key, required this.title});
-
+  const IdeaPage( {super.key, required this.title});
+  
+  //final index;
   final String title;
   
   @override
   Widget build(BuildContext context,WidgetRef ref) {
   final ideaViewModel = ref.watch(ideaViewModelProvider.notifier);
   final ideaProvider = ref.watch(ideaViewModelProvider);
+
+
     return Scaffold(
       appBar: AppBar(
         

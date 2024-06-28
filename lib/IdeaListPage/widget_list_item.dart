@@ -4,14 +4,15 @@ import 'package:get_inspired/Model/Idea_ViewModel.dart';
 import 'package:get_inspired/utils/route_constants.dart';
 
 class ListItemIdea extends ConsumerWidget{
-const ListItemIdea({super.key});
-
+const ListItemIdea( {super.key, required this.index});
+final index;
   @override
   Widget build(BuildContext context,WidgetRef ref) {
     
     final ideaViewModel = ref.watch(ideaViewModelProvider.notifier);
     final ideaProvider = ref.watch(ideaViewModelProvider);
     
+   // allIdeas = ideaViewModel.loadAllIdeas();
    
       //body: Material(
         
@@ -20,6 +21,7 @@ const ListItemIdea({super.key});
           child:InkWell(
           borderRadius: BorderRadius.circular(30),
           onTap: () {
+            ideaViewModel.swapIdea(ideaViewModel.allIdeas[index]);
             Navigator.pushNamed(context, RoutePaths.ideaPage);
           }, 
           child: Container(

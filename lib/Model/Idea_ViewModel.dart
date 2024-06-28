@@ -5,11 +5,12 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:get_inspired/Model/color_palettes.dart';
 import 'package:get_inspired/Model/idea_model.dart';
 import 'package:get_inspired/Model/types.dart';
+import 'package:get_inspired/Service/idea_service.dart';
 
 
 class Idea_ViewModel extends StateNotifier<Idea>{
- 
-  
+ final IdeaService ideaService;
+  List<Idea> allIdeas = [];
   final List<String> types = IdeaType.stringValues();
   final List<String> themes  = IdeaTheme.stringValues();
   final List<String> scienceFictionTypes = ScienceFictionType.stringValues();
@@ -17,7 +18,7 @@ class Idea_ViewModel extends StateNotifier<Idea>{
   final List<String> realLifeTypes = RealLifeType.stringValues();
   final List<String> mitologyTypes = MitologyType.stringValues();
 
-  Idea_ViewModel() : super(Idea(ideaName: "",themeExample: "",ideaType: "",ideaSubType: "",ideaTheme:"",  description: '',ideaMood:'',colorPalette: []));
+  Idea_ViewModel(this.ideaService) : super(Idea(id: "", ideaName: "",themeExample: "",ideaType: "",ideaSubType: "",ideaTheme:"",  description: '',ideaMood:'',colorPalette: [],drawings: []));
   
   String get ideaType => state.ideaType;
   String get ideaName => state.ideaName;
@@ -27,6 +28,17 @@ class Idea_ViewModel extends StateNotifier<Idea>{
   String get ideaMood => state.ideaMood;
   List<Color> get colorPalette => state.colorPalette;
 
+  Future<void> saveIdea() async{
+    await ideaService.saveIdea(state);
+  }
+ void loadAllIdeas() async{
+  List<Idea> listOfAllIdeas = await ideaService.getIdeaList();
+  allIdeas = listOfAllIdeas;
+ }
+  void swapIdea(Idea newIdea)async{
+    state = newIdea;
+  }
+  
   void chooseType(String type){
     state = state.copyWith(ideaType: type);
     
@@ -47,7 +59,7 @@ class Idea_ViewModel extends StateNotifier<Idea>{
   }
 
   void clearIdea(){
-    state = Idea(ideaName: "",ideaType: "",themeExample: "",ideaSubType: "",ideaTheme: "", description: '',ideaMood:"",colorPalette: []);
+    state = Idea(id: "",ideaName: "",ideaType: "",themeExample: "",ideaSubType: "",ideaTheme: "", description: '',ideaMood:"",colorPalette: [],drawings: []);
   }
 
   List<Color> generateColorPalette(String mood){
@@ -77,7 +89,7 @@ class Idea_ViewModel extends StateNotifier<Idea>{
     String generateDescription = "";
 //will generate a description of an idea
     generateDescription+= state.ideaType;
-    generateDescription+= " of a ";
+    if(state.ideaType!="") {generateDescription+= " of a ";}
     if(state.ideaType!="object concept art"){
      generateDescription+=state.ideaMood;
     }
@@ -104,5 +116,5 @@ class Idea_ViewModel extends StateNotifier<Idea>{
 }
 
 final ideaViewModelProvider = StateNotifierProvider<Idea_ViewModel,Idea>((ref){
-  return Idea_ViewModel();
+  return Idea_ViewModel(IdeaService());
 });
