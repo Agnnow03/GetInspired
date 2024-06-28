@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:get_inspired/IdeaPage/idea_page.dart';
 import 'package:get_inspired/Model/Idea_ViewModel.dart';
 import 'package:get_inspired/utils/route_constants.dart';
 import 'widget_list_item.dart';
@@ -24,18 +25,23 @@ class IdeaListPage extends ConsumerWidget {
       body: Center(
        // child: ListItemIdea(),
         //ZMIENIC NA ListView builder
-       child: ListView.builder(
+      
+       child:SingleChildScrollView(
+  child: SizedBox(
+    height: MediaQuery.of(context).size.height - MediaQuery.of(context).padding.top,
+    child: ListView.builder(
               itemCount: ideaViewModel.allIdeas.length,
               itemBuilder: (context, index) {
                 final idea = ideaViewModel.allIdeas[index];
                 return ListTile(
                   title: Text(idea.ideaName),
                   onTap: (){
-                    Navigator.pushNamed(context, RoutePaths.ideaPage);
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => IdeaPage(index:index,title:title)));
                   },
                 );
               },
- 
+    ),
+  ),
         ),
       ),
     );

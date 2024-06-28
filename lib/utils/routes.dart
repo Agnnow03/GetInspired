@@ -19,7 +19,7 @@ class Routes{
       case RoutePaths.theme: return MaterialPageRoute(builder: (context)=> ThemePage(title: "Idea Creator"),);
       case RoutePaths.mood: return MaterialPageRoute(builder: (context)=> MoodPage(title: "Idea Creator"),);
       case RoutePaths.ideaList: return MaterialPageRoute(builder: (context)=> IdeaListPage(title: "Your ideas"),);
-      case RoutePaths.ideaPage: return MaterialPageRoute(builder: (context)=> IdeaPage(title: "Idea Details"),);
+     //case RoutePaths.ideaPage: return MaterialPageRoute(builder: (context)=> IdeaPage(title: "Idea Details",""),);
       
       //add more
       default: return MaterialPageRoute(builder: (context) {

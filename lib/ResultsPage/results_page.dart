@@ -64,7 +64,7 @@ class ResultsPage extends ConsumerWidget {
                 if (userInput.text.isNotEmpty) {
                   ideaViewModel.setName(userInput.text);
                   await ideaViewModel.saveIdea();
-                  Navigator.pushNamed(context, RoutePaths.ideaPage);
+                  Navigator.pushNamed(context, RoutePaths.ideaList);
                 } else {
                   ScaffoldMessenger.of(context).showSnackBar(
                     SnackBar(content: Text('Please enter an idea name')),
@@ -83,6 +83,7 @@ class ResultsPage extends ConsumerWidget {
               ),
               onPressed: () {
                 ideaViewModel.clearIdea();
+                ideaViewModel.loadAllIdeas();
                 Navigator.pushNamed(context, RoutePaths.createIdea);
               },
               child: const Text('Retry'),
@@ -93,3 +94,5 @@ class ResultsPage extends ConsumerWidget {
     );
   }
 }
+
+
